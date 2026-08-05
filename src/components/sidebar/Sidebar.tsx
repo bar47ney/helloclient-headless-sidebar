@@ -5,7 +5,6 @@ import {
   type ButtonHTMLAttributes,
   type HTMLAttributes,
   type KeyboardEvent,
-  type MouseEvent,
   type MouseEventHandler,
   type ReactNode,
   type Ref,
@@ -523,12 +522,12 @@ const SubmenuItem = forwardRef(function SubmenuItem(
   const sidebar = useSidebarContext('Sidebar.SubmenuItem')
   const { setOpen } = useSubmenuContext('Sidebar.SubmenuItem')
 
-  const handleClick = (event: MouseEvent<HTMLLIElement>) => {
-    onClick?.(event)
-    if (!event.defaultPrevented && sidebar.isMobile) setOpen(false)
+  const handleClickCapture = () => {
+    // Capture runs before a nested router link changes location or stops bubbling.
+    if (sidebar.isMobile) setOpen(false)
   }
 
-  return <li ref={ref} data-active={active || undefined} onClick={handleClick} {...props} />
+  return <li ref={ref} data-active={active || undefined} onClickCapture={handleClickCapture} onClick={onClick} {...props} />
 })
 
 export const Sidebar = {

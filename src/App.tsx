@@ -59,7 +59,7 @@ function AppSidebar({ expanded, onExpandedChange }: { expanded: boolean; onExpan
     >
       <Sidebar.Navigation
         aria-label="Основная навигация"
-        className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-2 pb-[max(.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_30px_rgba(15,23,42,.08)] backdrop-blur md:inset-y-0 md:left-0 md:right-auto md:flex md:w-64 md:flex-col md:border-r md:border-t-0 md:px-3 md:py-5 md:shadow-none md:transition-[width] md:duration-300 md:group-data-[collapsed]/sidebar:w-20"
+        className="fixed inset-x-0 bottom-0 z-[70] border-t border-slate-200 bg-white/95 px-2 pb-[max(.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-8px_30px_rgba(15,23,42,.08)] backdrop-blur md:inset-y-0 md:left-0 md:right-auto md:z-40 md:flex md:w-64 md:flex-col md:border-r md:border-t-0 md:px-3 md:py-5 md:shadow-none md:transition-[width] md:duration-300 md:group-data-[collapsed]/sidebar:w-20"
       >
         <div className="mb-6 hidden h-10 items-center gap-3 px-3 md:flex">
           <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-blue-600 text-sm font-bold text-white">HC</span>
@@ -81,8 +81,8 @@ function AppSidebar({ expanded, onExpandedChange }: { expanded: boolean; onExpan
             <Sidebar.SubmenuContent
               label="Клиенты"
               className="space-y-1 border-l border-slate-200 py-1 pl-4 md:group-data-[collapsed]/sidebar:absolute md:group-data-[collapsed]/sidebar:bottom-0 md:group-data-[collapsed]/sidebar:left-[calc(100%+.75rem)] md:group-data-[collapsed]/sidebar:w-48 md:group-data-[collapsed]/sidebar:rounded-2xl md:group-data-[collapsed]/sidebar:border md:group-data-[collapsed]/sidebar:bg-white md:group-data-[collapsed]/sidebar:p-2 md:group-data-[collapsed]/sidebar:shadow-xl"
-              backdropClassName="fixed inset-0 z-50 bg-slate-950/45 backdrop-blur-[2px]"
-              panelClassName="fixed inset-x-0 bottom-0 z-50 rounded-t-3xl bg-white px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 shadow-2xl"
+              backdropClassName="fixed inset-x-0 top-0 bottom-[72px] z-50 bg-slate-950/45 backdrop-blur-[2px]"
+              panelClassName="fixed inset-x-0 bottom-[72px] z-[60] max-h-[70svh] overflow-y-auto rounded-t-3xl bg-white px-4 pb-6 pt-4 shadow-2xl"
               headingClassName="mb-3 flex items-center justify-between px-1 text-lg font-bold text-slate-950"
               closeClassName="grid size-10 place-items-center rounded-full text-2xl font-light text-slate-500 outline-none hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-500"
             >
@@ -101,8 +101,8 @@ function AppSidebar({ expanded, onExpandedChange }: { expanded: boolean; onExpan
             <Sidebar.SubmenuContent
               label="Склад"
               className="space-y-1 border-l border-slate-200 py-1 pl-4 md:group-data-[collapsed]/sidebar:absolute md:group-data-[collapsed]/sidebar:bottom-0 md:group-data-[collapsed]/sidebar:left-[calc(100%+.75rem)] md:group-data-[collapsed]/sidebar:w-48 md:group-data-[collapsed]/sidebar:rounded-2xl md:group-data-[collapsed]/sidebar:border md:group-data-[collapsed]/sidebar:bg-white md:group-data-[collapsed]/sidebar:p-2 md:group-data-[collapsed]/sidebar:shadow-xl"
-              backdropClassName="fixed inset-0 z-50 bg-slate-950/45 backdrop-blur-[2px]"
-              panelClassName="fixed inset-x-0 bottom-0 z-50 rounded-t-3xl bg-white px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4 shadow-2xl"
+              backdropClassName="fixed inset-x-0 top-0 bottom-[72px] z-50 bg-slate-950/45 backdrop-blur-[2px]"
+              panelClassName="fixed inset-x-0 bottom-[72px] z-[60] max-h-[70svh] overflow-y-auto rounded-t-3xl bg-white px-4 pb-6 pt-4 shadow-2xl"
               headingClassName="mb-3 flex items-center justify-between px-1 text-lg font-bold text-slate-950"
               closeClassName="grid size-10 place-items-center rounded-full text-2xl font-light text-slate-500 outline-none hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-500"
             >
@@ -402,7 +402,7 @@ function ActivityRow({ title, author, time }: { title: string; author: string; t
 function InventoryProducts() {
   return (
     <div className="flex min-h-[calc(100vh-3.5rem)] flex-col bg-white lg:flex-row">
-      <aside aria-label="Категории товаров" className="shrink-0 border-b border-slate-200 bg-slate-50/70 lg:w-72 lg:border-b-0 lg:border-r">
+      <aside aria-label="Категории товаров" className="hidden shrink-0 border-b border-slate-200 bg-slate-50/70 lg:block lg:w-72 lg:border-b-0 lg:border-r">
         <div className="border-b border-slate-200 bg-white px-5 py-5">
           <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-600">Склад</p>
           <h1 className="mt-1 text-lg font-bold text-slate-950">Товары и категории</h1>
@@ -420,7 +420,7 @@ function InventoryProducts() {
         </div>
       </aside>
 
-      <section className="min-w-0 flex-1 bg-slate-50 px-5 py-7 sm:px-8 lg:px-10">
+      <section className="min-w-0 flex-1 bg-slate-50 px-4 py-6 pb-28 sm:px-8 lg:px-10 lg:pb-10">
         <div className="mb-6 flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-[.16em] text-blue-600">Все категории</p>
@@ -434,7 +434,15 @@ function InventoryProducts() {
           </label>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div className="space-y-3 md:hidden">
+          <ProductMobileCard name="Беспроводные наушники AirBeat" sku="AB-2048" category="Электроника" stock={18} />
+          <ProductMobileCard name="Настольная лампа Mono" sku="LM-0312" category="Для дома" stock={7} />
+          <ProductMobileCard name="Чехол AirCase Pro" sku="AC-1190" category="Аксессуары" stock={42} />
+          <ProductMobileCard name="Портативная колонка Wave" sku="WV-8821" category="Электроника" stock={3} />
+          <ProductMobileCard name="Органайзер Grid" sku="GR-4402" category="Для дома" stock={26} />
+        </div>
+
+        <div className="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:block">
           <div className="overflow-x-auto">
             <table className="w-full min-w-[720px] text-left text-sm">
               <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wider text-slate-500">
@@ -477,6 +485,25 @@ function ProductRow({ name, sku, category, stock }: { name: string; sku: string;
       <td className="px-5 py-4"><span className={`rounded-full px-2.5 py-1 text-xs font-bold ${stock < 5 ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'}`}>{stock} шт.</span></td>
       <td className="px-5 py-4"><button aria-label={`Действия: ${name}`} className="grid size-8 place-items-center rounded-lg text-slate-400 outline-none hover:bg-slate-100 hover:text-slate-700 focus-visible:ring-2 focus-visible:ring-blue-500"><MoreHorizontal size={18} /></button></td>
     </tr>
+  )
+}
+
+function ProductMobileCard({ name, sku, category, stock }: { name: string; sku: string; category: string; stock: number }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+      <div className="flex items-start gap-3">
+        <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600"><Package size={19} /></span>
+        <div className="min-w-0 flex-1">
+          <h3 className="font-semibold leading-5 text-slate-900">{name}</h3>
+          <p className="mt-1 font-mono text-xs text-slate-400">{sku}</p>
+        </div>
+        <button aria-label={`Действия: ${name}`} className="grid size-8 shrink-0 place-items-center rounded-lg text-slate-400 outline-none hover:bg-slate-100 focus-visible:ring-2 focus-visible:ring-blue-500"><MoreHorizontal size={18} /></button>
+      </div>
+      <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
+        <span className="text-xs font-medium text-slate-500">{category}</span>
+        <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${stock < 5 ? 'bg-amber-50 text-amber-700' : 'bg-emerald-50 text-emerald-700'}`}>{stock} шт.</span>
+      </div>
+    </article>
   )
 }
 
