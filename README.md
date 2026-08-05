@@ -2,6 +2,9 @@
 
 Тестовое задание HelloClient: доступное адаптивное меню на React, TypeScript и Tailwind CSS. Компоненты меню отвечают только за состояние, события, адаптивное поведение и ARIA. Вся визуальная часть находится в компоненте-потребителе `App.tsx`.
 
+**Демо:** https://testhelloclient.vercel.app  
+**Репозиторий:** https://github.com/bar47ney/helloclient-headless-sidebar
+
 ## Запуск
 
 ```bash
